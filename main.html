@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savvy AI - Skill Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <nav class="fixed w-full z-50 text-white">
+        <!-- Glass background effect for nav -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-90 backdrop-blur-md"></div>
+
+        <div class="container mx-auto py-4 px-6 relative z-10">
+            <div class="flex justify-between items-center">
+                <!-- Logo with glass effect -->
+                <h1 class="text-2xl font-bold flex items-center">
+                    <i class="fa-solid fa-robot mr-2"></i>
+                    <span class="tracking-wide">Savvy AI</span>
+                </h1>
+
+                <div class="flex items-center">
+
+                    <!-- Navigation buttons with consistent glass effect -->
+                    <div class="flex gap-4">
+                        <button
+                            class="tab-btn transition-all duration-300 px-6 py-2 rounded-lg hover:bg-white hover:bg-opacity-10 active:scale-95"
+                            data-tab="home">
+                            <i class="fa-solid fa-home mr-2"></i>Home
+                        </button>
+                        <button
+                            class="tab-btn transition-all duration-300 px-6 py-2 rounded-lg hover:bg-white hover:bg-opacity-10 active:scale-95"
+                            data-tab="generate">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate Test
+                        </button>
+                        <button
+                            class="tab-btn transition-all duration-300 px-6 py-2 rounded-lg hover:bg-white hover:bg-opacity-10 active:scale-95"
+                            data-tab="take">
+                            <i class="fa-solid fa-pen-to-square mr-2"></i>Take Test
+                        </button>
+                        <button
+                            class="tab-btn transition-all duration-300 px-6 py-2 rounded-lg hover:bg-white hover:bg-opacity-10 active:scale-95"
+                            data-tab="dashboard">
+                            <i class="fa-solid fa-chart-simple mr-2"></i>Dashboard
+                        </button>
+                        <!-- User profile section -->
+                        <div class="mr-6 flex items-center" id="user-profile">
+                            <span class="text-sm mr-2">Welcome, <span id="user-name">User</span></span>
+                            <div class="relative">
+                                <button id="profile-dropdown-toggle"
+                                    class="w-10 h-10 rounded-full bg-white text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
+                                    <i class="fa-solid fa-user"></i>
+                                </button>
+                                <div id="profile-dropdown"
+                                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden z-50">
+                                    <div class="py-1">
+                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100">
+                                            <i class="fa-solid fa-user-gear mr-2"></i> Profile Settings
+                                        </a>
+                                        <button id="logout-btn"
+                                            class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-100">
+                                            <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6 pt-20">
+        <!-- Home Tab -->
+        <div id="home" class="tab-content active">
+            <!-- Hero Section -->
+            <div class="relative min-h-[85vh] flex items-center overflow-hidden">
+                <!-- Background Gradient -->
+                <div
+                    class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-blue-600 via-indigo-500 to-transparent transform rotate-12 translate-x-24 rounded-l-[100px] opacity-20">
+                </div>
+
+                <!-- Floating Doodles -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <i
+                        class="fa-solid fa-brain text-4xl text-blue-400 opacity-20 absolute top-20 right-40 float animate-delay-2"></i>
+                    <i
+                        class="fa-solid fa-lightbulb text-5xl text-indigo-400 opacity-20 absolute top-40 right-96 float animate-delay-3"></i>
+                    <i
+                        class="fa-solid fa-chart-line text-4xl text-purple-400 opacity-20 absolute bottom-40 right-32 float"></i>
+                    <i
+                        class="fa-solid fa-graduation-cap text-5xl text-blue-400 opacity-20 absolute bottom-20 right-80 float animate-delay-1"></i>
+                    <i
+                        class="fa-solid fa-code text-4xl text-indigo-400 opacity-20 absolute top-60 right-60 float animate-delay-4"></i>
+                </div>
+
+                <!-- Content -->
+                <div class="relative z-10 w-full grid grid-cols-2 gap-8">
+                    <!-- Left Content -->
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <h1 class="text-6xl font-bold text-gray-800 leading-tight">
+                                Master Your Skills
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">with
+                                    AI</span>
+                            </h1>
+                            <p class="text-xl text-gray-600">Experience personalized learning through AI-powered
+                                assessments and real-time progress tracking</p>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <button
+                                class="start-btn group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                                data-tab="generate">
+                                Get Started
+                                <i
+                                    class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 transform group-hover:translate-x-2"></i>
+                            </button>
+                            <button
+                                class="start-btn glass text-gray-800 px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                                data-tab="take">
+                                Take a Test
+                                <i class="fa-solid fa-pen-to-square ml-2"></i>
+                            </button>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-6 pt-8">
+                            <div class="glass p-4 rounded-xl text-center">
+                                <div class="text-3xl font-bold text-blue-600 mb-1">500+</div>
+                                <div class="text-sm text-gray-600">Questions</div>
+                            </div>
+                            <div class="glass p-4 rounded-xl text-center">
+                                <div class="text-3xl font-bold text-indigo-600 mb-1">4.8</div>
+                                <div class="text-sm text-gray-600">User Rating</div>
+                            </div>
+                            <div class="glass p-4 rounded-xl text-center">
+                                <div class="text-3xl font-bold text-purple-600 mb-1">24/7</div>
+                                <div class="text-sm text-gray-600">Support</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Image/Illustration -->
+                    <div class="relative flex items-center justify-center">
+                        <div class="w-full h-full max-w-lg">
+                            <div class="glass w-full aspect-square rounded-full transform -rotate-12 opacity-20"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa-solid fa-robot text-8xl text-blue-600 float"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rest of the sections -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <div
+                    class="glass p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">How It Works</h3>
+                    <ol class="list-decimal pl-5 space-y-4">
+                        <li class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Generate
+                            personalized skill assessment test</li>
+                        <li class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Take the test and
+                            submit your answers</li>
+                        <li class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Review your results
+                            and AI-generated recommendations</li>
+                        <li class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Track your progress
+                            over time</li>
+                    </ol>
+                </div>
+
+                <div
+                    class="glass p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Powered by AI</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div
+                            class="p-6 bg-white bg-opacity-50 rounded-lg transform hover:scale-105 transition-all duration-300">
+                            <div class="text-blue-600 text-4xl mb-4">🤖</div>
+                            <h4 class="font-bold mb-2">Custom Questions</h4>
+                            <p class="text-sm text-gray-600">AI-generated questions tailored to your level</p>
+                        </div>
+                        <div
+                            class="p-6 bg-white bg-opacity-50 rounded-lg transform hover:scale-105 transition-all duration-300">
+                            <div class="text-blue-600 text-4xl mb-4">📝</div>
+                            <h4 class="font-bold mb-2">Smart Evaluation</h4>
+                            <p class="text-sm text-gray-600">Intelligent assessment of your responses</p>
+                        </div>
+                        <div
+                            class="p-6 bg-white bg-opacity-50 rounded-lg transform hover:scale-105 transition-all duration-300">
+                            <div class="text-blue-600 text-4xl mb-4">📈</div>
+                            <h4 class="font-bold mb-2">Progress Tracking</h4>
+                            <p class="text-sm text-gray-600">Detailed analytics of your growth</p>
+                        </div>
+                        <div
+                            class="p-6 bg-white bg-opacity-50 rounded-lg transform hover:scale-105 transition-all duration-300">
+                            <div class="text-blue-600 text-4xl mb-4">🎯</div>
+                            <h4 class="font-bold mb-2">Personal Growth</h4>
+                            <p class="text-sm text-gray-600">Customized improvement recommendations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generate Test Tab -->
+        <div id="generate" class="tab-content hidden">
+            <h2 class="text-3xl font-bold mb-6 transform transition-all duration-500 hover:text-blue-600">Generate a
+                Test</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <form id="generate-form" class="space-y-4">
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">User Type</label>
+                        <select id="user-type"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            <option value="student">Student</option>
+                            <option value="professional">Professional</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">Test Category</label>
+                        <select id="test-category"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            <option value="aptitude">Aptitude</option>
+                            <option value="reading">Reading Skills</option>
+                            <option value="writing">Writing Skills</option>
+                            <option value="personality">Personality Assessment</option>
+                        </select>
+                    </div>
+
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">Difficulty Level</label>
+                        <select id="difficulty"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">Number of Questions</label>
+                        <input type="number" id="question-count" min="5" max="20" value="10"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95">
+                            <span class="flex items-center">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
+                                Generate Test
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="generation-result" class="mt-6 hidden transform transition-all duration-500 animate-fade-in-down">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline"> Your test has been generated.</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mt-4 hover:shadow-xl transition-all duration-300">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600">Test Details</h3>
+                <div id="test-details" class="space-y-2 transform transition-all duration-300"></div>
+                <button id="take-generated-test"
+                    class="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 flex items-center">
+                    <i class="fa-solid fa-play mr-2"></i>
+                    Take This Test
+                </button>
+            </div>
+        </div>
+
+        <!-- Take Test Tab -->
+        <div id="take" class="tab-content hidden">
+            <h2 class="text-3xl font-bold mb-6 transform transition-all duration-500 hover:text-blue-600">Take a Test
+            </h2>
+            <div id="test-selection"
+                class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600">Select a Test</h3>
+                <div class="space-y-4">
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">Test Category</label>
+                        <select id="take-test-category"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            <option value="aptitude">Aptitude</option>
+                            <option value="reading">Reading Skills</option>
+                            <option value="writing">Writing Skills</option>
+                            <option value="personality">Personality Assessment</option>
+                        </select>
+                    </div>
+
+                    <div class="transform transition-all duration-300 hover:scale-[1.01]">
+                        <label class="block mb-2 font-medium">Difficulty Level</label>
+                        <select id="take-difficulty"
+                            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button id="start-test"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 flex items-center">
+                            <i class="fa-solid fa-pen-to-square mr-2"></i>
+                            Start Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-container" class="mt-6 hidden transform transition-all duration-500 animate-fade-in-down">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="test-title" class="text-xl font-semibold text-blue-600"></h3>
+                        <div id="test-timer" class="text-lg font-medium px-4 py-2 bg-blue-50 rounded-lg text-blue-600">
+                        </div>
+                    </div>
+
+                    <div id="test-progress" class="w-full bg-gray-200 rounded-full h-2.5 mb-4 overflow-hidden">
+                        <div id="progress-bar"
+                            class="bg-blue-600 h-2.5 rounded-full transition-all duration-700 ease-out"
+                            style="width: 0%"></div>
+                    </div>
+
+                    <div id="question-container"
+                        class="mb-6 p-4 bg-blue-50 bg-opacity-50 rounded-lg transform transition-all duration-300">
+                        <!-- Questions will be populated here -->
+                    </div>
+
+                    <div class="flex justify-between">
+                        <button id="prev-question"
+                            class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition-all duration-300 active:scale-95 flex items-center">
+                            <i class="fa-solid fa-arrow-left mr-2"></i>
+                            Previous
+                        </button>
+                        <button id="next-question"
+                            class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition-all duration-300 active:scale-95 flex items-center">
+                            Next
+                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                        <button id="submit-test"
+                            class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 flex items-center">
+                            <i class="fa-solid fa-check mr-2"></i>
+                            Submit Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-result" class="mt-6 hidden transform transition-all duration-500 animate-fade-in-down">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-600">Test Results</h3>
+
+                    <div id="score-display" class="text-center py-6 transform transition-all duration-500">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-blue-50 p-8 mb-2 ring-2 ring-blue-100">
+                            <div id="score-percentage" class="text-5xl font-bold text-blue-600"></div>
+                        </div>
+                        <div class="text-lg mt-2 text-gray-600">Your Score</div>
+                    </div>
+
+                    <div id="skill-level"
+                        class="mb-4 p-4 bg-gray-50 rounded-lg transition-all duration-300 hover:bg-gray-100"></div>
+
+                    <div id="recommendations" class="mt-6">
+                        <h4 class="font-semibold mb-2 flex items-center text-blue-600">
+                            <i class="fa-solid fa-lightbulb mr-2"></i>
+                            AI Recommendations
+                        </h4>
+                        <div id="recommendation-text"
+                            class="p-4 bg-blue-50 rounded-lg transition-all duration-300 hover:bg-blue-100"></div>
+                    </div>
+
+                    <button id="view-dashboard"
+                        class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 flex items-center mx-auto">
+                        <i class="fa-solid fa-chart-simple mr-2"></i>
+                        View Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content hidden">
+            <h2 class="text-3xl font-bold mb-6 transform transition-all duration-500 hover:text-blue-600">Your Progress
+                Dashboard</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                    class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-600 flex items-center">
+                        <i class="fa-solid fa-chart-pie mr-2"></i>
+                        Skill Overview
+                    </h3>
+                    <div id="skills-chart" class="h-64 transition-all duration-500">
+                        <!-- Chart will be rendered here -->
+                        <p class="text-center text-gray-500 py-16">Select a category to see your skills chart</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-600 flex items-center">
+                        <i class="fa-solid fa-chart-line mr-2"></i>
+                        Progress Over Time
+                    </h3>
+                    <div id="progress-chart" class="h-64 transition-all duration-500">
+                        <!-- Chart will be rendered here -->
+                        <p class="text-center text-gray-500 py-16">Complete more tests to see your progress</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 md:col-span-2">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-600 flex items-center">
+                        <i class="fa-solid fa-list-check mr-2"></i>
+                        Recent Tests
+                    </h3>
+                    <div id="recent-tests" class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-blue-50">
+                                    <th class="px-6 py-3 text-left">Date</th>
+                                    <th class="px-6 py-3 text-left">Category</th>
+                                    <th class="px-6 py-3 text-left">Difficulty</th>
+                                    <th class="px-6 py-3 text-left">Score</th>
+                                    <th class="px-6 py-3 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tests-table" class="divide-y divide-gray-200">
+                                <!-- Test history will be populated here -->
+                                <tr>
+                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">No test history
+                                        available</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 md:col-span-2">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-600 flex items-center">
+                        <i class="fa-solid fa-graduation-cap mr-2"></i>
+                        Skill Development Recommendations
+                    </h3>
+                    <div id="ai-recommendations"
+                        class="p-4 bg-blue-50 rounded-lg transition-all duration-300 hover:bg-blue-100">
+                        <!-- AI recommendations will be displayed here -->
+                        <p class="text-gray-500">Complete more tests to receive personalized recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 w-full mt-auto">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold mb-3">Savvy AI Skill Tracker</h3>
+                <p class="text-gray-300">A gamified AI-powered platform for skill assessment and development</p>
+                <p class="mt-3">&copy; 2023 Savvy AI Skill Tracker. All rights reserved.</p>
+            </div>
+
+            <!-- Contact -->
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-3">Contact Us</h3>
+                <div class="space-y-2 text-gray-300">
+                    <p><i class="fa-solid fa-location-dot mr-2"></i>Lovely Professional University</p>
+                    <p><i class="fa-solid fa-location-dot mr-2"></i>144411 - Jalandhar, Punjab</p>
+                    <p><i class="fa-solid fa-phone mr-2"></i>+91 9661720207</p>
+                    <p><i class="fa-solid fa-envelope mr-2"></i>support@savvyai.in</p>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="text-center md:text-right">
+                <h3 class="text-xl font-bold mb-3">Connect With Us</h3>
+                <div class="flex justify-center md:justify-end space-x-4 text-2xl mb-4">
+                    <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-blue-300 transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-500 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-red-500 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <p class="text-sm text-gray-400">Registered under Ministry of Electronics & IT, Government of India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/storage-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/test-taker.js"></script>
+    <script src="js/test-generator.js"></script>
+
+    <!-- Chatbot Component -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="chatbot-box" id="chatbot-box">
+            <div class="chatbot-header">
+                <h3><i class="fa-solid fa-robot"></i> Savvo AI</h3>
+                <button id="close-chatbot"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <p>Hi there! I'm your AI skill evaluation assistant. Ask me anything about your skills or
+                        improvement suggestions.</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="Type your question here...">
+                <button id="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chatbot.js"></script>
+
+    <script>
+        /**
+         * Initialize main application UI
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeUI();
+        });
+
+        /**
+         * Initialize UI components and event listeners
+         * @returns {void}
+         */
+        function initializeUI() {
+            // Verify authentication
+            if (!Auth.isAuthenticated()) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Update user profile display
+            const currentUser = Auth.getCurrentUser();
+            if (currentUser) {
+                document.getElementById('user-name').textContent = currentUser.name;
+            }
+
+            // Setup profile dropdown
+            setupProfileDropdown();
+
+            // Setup logout handler
+            setupLogoutHandler();
+        }
+
+        /**
+         * Setup profile dropdown toggle
+         * @returns {void}
+         */
+        function setupProfileDropdown() {
+            const toggle = document.getElementById('profile-dropdown-toggle');
+            const dropdown = document.getElementById('profile-dropdown');
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        /**
+         * Setup logout button handler
+         * @returns {void}
+         */
+        function setupLogoutHandler() {
+            const logoutBtn = document.getElementById('logout-btn');
+            logoutBtn.addEventListener('click', () => {
+                Auth.logout();
+                window.location.href = 'index.html';
+            });
+        }
+    </script>
+</body>
+
+</html>

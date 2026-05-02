@@ -1,0 +1,61 @@
+/* Login Page Styles */
+.login-tab-btn {
+    color: #718096;
+    border-bottom: 3px solid transparent;
+}
+
+.login-tab-btn.active {
+    color: #4F46E5;
+    border-bottom: 3px solid #4F46E5;
+    background-color: rgba(79, 70, 229, 0.05);
+}
+
+.social-login-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.social-login-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Form validation */
+input.error {
+    border-color: #EF4444;
+}
+
+input.valid {
+    border-color: #10B981;
+}
+
+.error-message {
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}

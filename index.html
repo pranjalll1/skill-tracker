@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savvy AI - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold flex items-center justify-center text-blue-600">
+                    <i class="fa-solid fa-robot mr-3"></i>
+                    <span class="tracking-wide">Savvy AI</span>
+                </h1>
+                <p class="text-gray-600 mt-2">Skill Assessment Platform</p>
+            </div>
+
+            <!-- Login Form Container -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                <!-- Tabs -->
+                <div class="flex text-center">
+                    <button id="login-tab"
+                        class="login-tab-btn active w-1/2 py-4 text-lg font-semibold transition-all duration-300">
+                        Login
+                    </button>
+                    <button id="register-tab"
+                        class="login-tab-btn w-1/2 py-4 text-lg font-semibold transition-all duration-300">
+                        Register
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form-container" class="p-8">
+                    <form id="login-form" class="space-y-6">
+                        <div id="login-error"
+                            class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative">
+                            <span id="login-error-message"></span>
+                        </div>
+
+                        <div>
+                            <label for="login-email" class="block text-gray-700 mb-2">Email</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="login-email" placeholder="Enter your email"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="login-password" class="block text-gray-700 mb-2">Password</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" id="login-password" placeholder="Enter your password"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                                <span
+                                    class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-500 toggle-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me"
+                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <div>
+                                <a href="#" class="text-sm text-blue-600 hover:text-blue-800 transition-colors">Forgot
+                                    password?</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95">
+                                <i class="fa-solid fa-sign-in-alt mr-2"></i> Login
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600">Or login with</p>
+                        <div class="flex justify-center space-x-4 mt-3">
+                            <button class="social-login-btn">
+                                <i class="fa-brands fa-google"></i>
+                            </button>
+                            <button class="social-login-btn">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </button>
+                            <button class="social-login-btn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form-container" class="p-8 hidden">
+                    <form id="register-form" class="space-y-6">
+                        <div id="register-error"
+                            class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative">
+                            <span id="register-error-message"></span>
+                        </div>
+
+                        <div id="register-success"
+                            class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative">
+                            <span>Registration successful! You can now login.</span>
+                        </div>
+
+                        <div>
+                            <label for="register-name" class="block text-gray-700 mb-2">Full Name</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" id="register-name" placeholder="Enter your full name"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="register-email" class="block text-gray-700 mb-2">Email</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="register-email" placeholder="Enter your email"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="register-password" class="block text-gray-700 mb-2">Password</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" id="register-password" placeholder="Enter your password"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                                <span
+                                    class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-500 toggle-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="register-confirm-password" class="block text-gray-700 mb-2">Confirm
+                                Password</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" id="register-confirm-password"
+                                    placeholder="Confirm your password"
+                                    class="w-full px-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                                <span
+                                    class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-500 toggle-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="terms-agreement"
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="terms-agreement" class="ml-2 block text-sm text-gray-700">
+                                I agree to the <a href="#"
+                                    class="text-blue-600 hover:text-blue-800 transition-colors">Terms of Service</a> and
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors">Privacy
+                                    Policy</a>
+                            </label>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95">
+                                <i class="fa-solid fa-user-plus mr-2"></i> Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="mt-6 text-center text-gray-600 text-sm">
+                <p>By using this service, you agree to our <a href="#" class="text-blue-600 hover:underline">Terms of
+                        Service</a> and
+                    <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "question_text": "Which of the following is an example of a deductive reasoning approach?",
+    "options": [
+      "Drawing conclusions from specific observations",
+      "Starting with a theory and testing it with specific observations",
+      "Making educated guesses based on limited information",
+      "Comparing and contrasting different scenarios"
+    ],
+    "correct_answer": "Starting with a theory and testing it with specific observations"
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "question_text": "If a train travels at 60 miles per hour, how far will it travel in 2.5 hours?",
+    "options": [
+      "120 miles",
+      "150 miles",
+      "180 miles",
+      "210 miles"
+    ],
+    "correct_answer": "150 miles"
+  },
+  {
+    "id": 3,
+    "type": "reading",
+    "question_text": "Based on the passage, what is the author's main point about artificial intelligence?",
+    "passage": "Artificial intelligence has made tremendous strides in recent years, with applications ranging from healthcare to transportation. While these advancements offer exciting possibilities for improving human life, they also raise important ethical questions about privacy, autonomy, and the future of work. It is crucial that we develop AI systems thoughtfully, with strong ethical guidelines and human oversight to ensure they benefit humanity rather than harm it.",
+    "options": [
+      "AI development should be halted due to ethical concerns",
+      "AI advancements are beneficial but require ethical oversight",
+      "AI will inevitably lead to job losses and should be restricted",
+      "The benefits of AI outweigh any potential ethical concerns"
+    ],
+    "correct_answer": "AI advancements are beneficial but require ethical oversight"
+  },
+  {
+    "id": 4,
+    "type": "text_input",
+    "question_text": "Explain the concept of emotional intelligence and why it matters in professional settings.",
+    "criteria": "Clear explanation of emotional intelligence, specific examples, discussion of workplace relevance"
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "question_text": "Which of the following is a principle of effective communication?",
+    "options": [
+      "Using complex vocabulary to demonstrate expertise",
+      "Speaking quickly to convey more information",
+      "Tailoring your message to your audience",
+      "Avoiding any form of disagreement"
+    ],
+    "correct_answer": "Tailoring your message to your audience"
+  }
+]

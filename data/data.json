@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "userId": "user_001",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "$2b$10$demo_hashed_password",
+      "createdAt": "2026-01-01T00:00:00Z",
+      "lastLogin": "2026-05-01T00:00:00Z",
+      "stats": {
+        "totalTests": 0,
+        "averageScore": 0,
+        "skillLevel": "Beginner"
+      }
+    }
+  ],
+  "sessions": [],
+  "testResults": [],
+  "generatedTests": []
+}
