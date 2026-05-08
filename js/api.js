@@ -9,7 +9,7 @@ const API = {
   // Configuration - move API_KEY to environment variables in production
   API_KEY: "AIzaSyDjVVOusls7BLLaBDptc9lbX8uQHW6pYSI",
   API_URL:
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
 
   // Rate limiting
   maxRetries: 3,

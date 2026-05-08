@@ -151,7 +151,7 @@ const Chatbot = {
           (this._rateLimitResetTime - Date.now()) / 1000,
         );
         this._addMessage(
-          `⏱️ API rate limit exceeded. Please wait ${waitTime} seconds before trying again.`,
+          ` API rate limit exceeded. Please wait ${waitTime} seconds before trying again.`,
           "bot",
         );
         return;
@@ -187,17 +187,17 @@ Respond in conversational tone.`;
       this._isRateLimited = true;
       this._rateLimitResetTime = Date.now() + error.retryAfter * 1000;
       this._addMessage(
-        `⏱️ API rate limit reached. Please wait ${error.retryAfter} seconds and try again.`,
+        `API rate limit reached. Please wait ${error.retryAfter} seconds and try again.`,
         "bot",
       );
     } else if (error.message.includes("status 5")) {
       this._addMessage(
-        "🔧 The AI service is temporarily unavailable. Please try again in a moment.",
+        " The AI service is temporarily unavailable. Please try again in a moment.",
         "bot",
       );
     } else {
       this._addMessage(
-        "❌ Sorry, I encountered an error processing your request. Please try again later.",
+        " Sorry, I encountered an error processing your request. Please try again later.",
         "bot",
       );
     }
